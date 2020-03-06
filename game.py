@@ -9,6 +9,10 @@ class GameConnect4:
                 field_width=settings.FIELD_WIDTH,
                 length_to_win=settings.LENGTH_TO_WIN,
                 num_of_players=settings.NUMBER_OF_PLAYERS):
+        if field_height <= 0 or field_width <= 0 or length_to_win <= 0 or num_of_players <= 0:
+            print("Wrong settings!")
+            exit()
+
         self.field = [['X' for i in range(field_width)] for j in range(field_height)]
         self.num_of_players = num_of_players
         self.length_to_win = length_to_win
@@ -24,6 +28,17 @@ class GameConnect4:
                         return True
                 else:
                     cells_count = 0
+
+        cells_count = 0
+        for i in range(len(self.field[0])):
+            for j in range(len(self.field)):
+                if self.field[j][i] == self.current_player:
+                    cells_count += 1
+                    if cells_count == self.length_to_win:
+                        return True
+                else:
+                    cells_count = 0
+
         return False
 
     def turn(self, col):
