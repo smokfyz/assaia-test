@@ -29,7 +29,7 @@ class GameConnect4:
     def turn(self, col):
         if self.field[0][col] != 'X':
             raise ValueError
-        
+
         for i, row in enumerate(self.field):
             if row[col] == 'X':
                 continue
@@ -50,6 +50,7 @@ class GameConnect4:
         self.current_player = (self.current_player + 1) % self.num_of_players
 
     def start(self):
+        print(f"\n*** Welcome to Connect {self.length_to_win} Game ***")
         while not self.win_check():
             self.next_player()
             self.print_field()
