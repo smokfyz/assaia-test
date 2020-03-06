@@ -42,7 +42,7 @@ class GameConnect4:
         return False
 
     def turn(self, col):
-        if self.field[0][col] != 'X':
+        if col >= len(self.field[0]) or col < 0 or self.field[0][col] != 'X':
             raise ValueError
 
         for i, row in enumerate(self.field):
